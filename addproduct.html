@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main
+        {
+            width: 50%;
+            height:650px;
+            border: 1px solid black;
+            margin: auto;
+            margin-top:100px;
+            display: flex;
+        }
+        .left-side
+        {
+            width: 40%;
+            height: 100%;
+            /* border: 1px solid black; */
+            background-color:  #2874f0;
+            background-repeat: no-repeat;
+           background-position: center bottom;
+            background-image: url("https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png");
+        }
+        .title
+        {
+            width: 100%;
+            height: 80px;
+            /* border: 1px solid black; */
+            margin-top: 50px;
+            margin-bottom: 0;
+        }
+        .title h2
+        {
+            margin-left: 40px;
+            color: white;
+            font-size: 40px;
+            padding: 15px;
+            /* border: 1px solid violet; */
+            font-family: Roboto,Arial,sans-serif;
+        }
+        .Lines
+        {
+            width: 100%;
+            height: 100px;
+            /* border: 1px solid violet; */
+        }
+        .Lines p
+        {
+            font-size:25px;
+          margin-left: 50px;
+            margin-top: 0;
+            color: white;
+            font-family: Roboto,Arial,sans-serif;
+        }
+        .right-side
+        {
+            width: 60%;
+            height: 100%;
+            margin-top:40px;
+            margin-left: 10px;
+        }
+        label
+        {
+            font-size: 40px;
+            color: #2874f0;
+            
+        }
+        input
+        {
+            margin-top: 15px;
+            font-size: 40px;
+            margin-bottom: 10px;
+            /* border: none; */
+            outline: none;
+        }
+        .right-side h2
+        {
+         font-size: 50px;
+         margin-bottom: 20px;
+         color: #2874f0;
+        }
+        #product
+        {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <div class="left-side">
+        <div class="title">
+            <h2>FlipkartProduct</h2>
+        </div>
+        <div class="Lines">
+            <p>Get access to your Orders,Wishlist and Recommendations</p>
+        </div>
+    </div>
+    <div class="right-side">
+    <form onsubmit="addproduct(event)">
+        <h2>Adding Products</h2>
+        <label>Product Name</label><br>
+        <input type="text" id="pname"><br>
+        <label>Product Price</label><br>
+        <input type="text" id="pprice"><br>
+        <label>Product Image url </label><br>
+        <input type="text" id="pimage"><br>
+        <input style="background-color: #2874f0; color: white;" type="submit" value="Add" ><br>  
+    </form>
+    </div>
+    </div>
+    <script>
+        function addproduct(event)
+        {
+            event.preventDefault();
+             //alert("product adding")
+             var proName=document.getElementById("pname").value;
+             var proPrice=document.getElementById("pprice").value;
+             var proImage=document.getElementById("pimage").value;
+             var product={proName,proPrice,proImage} ;
+
+             var Ls=JSON.parse(localStorage.getItem("flipkartProductList")) || [];
+             Ls.push(product);
+             localStorage.setItem("flipkartProductList",JSON.stringify(Ls));
+             alert("Product Successfully")
+        }
+    </script>
+
+</body>
+</html>
